@@ -1,0 +1,25 @@
+import React, { Dispatch, SetStateAction } from 'react'
+import { BsXLg } from "react-icons/bs";
+
+interface Props {
+  open: boolean
+  setOpen: Dispatch<SetStateAction<boolean>>
+}
+
+const Sidebar = ({open, setOpen}:Props) => {
+  return (
+    <div className='h-screen w-64 z-30 bg-white fixed top-0 p-5 opacity-90'>
+        <div className='flex justify-between'>
+          <h1 className='text-xl font-bold'>メニュー</h1>
+          <BsXLg className='cursor-pointer' onClick={()=>setOpen(!open)}/>
+        </div>
+        <div className='mt-5'>
+          <h2 className='cursor-pointer text-xl mb-3 hover:underline'>動物</h2>
+          <h2 className='cursor-pointer text-xl hover:underline'>食べ物</h2>
+        </div>
+
+    </div>
+  )
+}
+
+export default Sidebar

@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { AiOutlineBars } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { SlBasket } from "react-icons/sl";
-function Topbar() {
+
+interface Props {
+  open: boolean
+  setOpen: Dispatch<SetStateAction<boolean>>
+}
+
+const Topbar = ({open, setOpen}:Props) => {
   return (
     <div className="h-16 z-10 flex items-center justify-between bg-gray-700  sticky top-0">
       <div className='flex items-center'>
-      <AiOutlineBars className='h-5 w-5 cursor-pointer ml-10 text-white  '/>
+      <AiOutlineBars 
+        className='h-5 w-5 cursor-pointer ml-10 text-white'
+        onClick={()=>setOpen(!open)}
+      />
       <h2 className='ml-2 hidden md:inline-block text-white '>electronic-commerce</h2>
       </div>
 
