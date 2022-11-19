@@ -1,14 +1,24 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
 import Topbar from '../components/Topbar'
+import Items from '../components/Items';
+
 
 const Home: NextPage = () => {
+  const images = [
+    "/animal1.jpg",
+    "/animal2.jpg",
+    "/animal3.jpg",
+    "/animal4.jpg",
+    "/animal5.jpg",
+  ]
   return (
-    <div>
+    <div className='h-full'>
       <Topbar />
       {/* <Sidebar /> */}
-      <main className='h-screen bg-green-300'>
+      <main className='min-h-screen bg-gray-200'>
+      <Items title={"人気の商品"} images={images}/>
+      <Items title={"新しい商品"} images={images}/>
+      <Items title={"期間限定"} images={images}/>
 
       </main>
 
