@@ -1,12 +1,17 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Topbar from '../components/Topbar'
 import Items from '../components/Items';
 import Sidebar from '../components/Sidebar';
 import { useState } from 'react';
+import { fetchItems } from '../util/fetchItems';
 
+interface Props {
+  items: Item[]
+}
 
-const Home: NextPage = () => {
+const Home: NextPage<Props> = ({items}: Props) => {
   const [open, setOpen] = useState(false)
+  console.log(items)
   const images = [
     "/animal1.jpg",
     "/animal2.jpg",
@@ -19,9 +24,9 @@ const Home: NextPage = () => {
       <Topbar open={open} setOpen={setOpen}/>
       {open && <Sidebar  open={open} setOpen={setOpen}/>}
       <main className='min-h-screen top-0 bg-gray-200'>
-      <Items title={"人気の商品"} images={images}/>
-      <Items title={"新しい商品"} images={images}/>
-      <Items title={"期間限定"} images={images}/>
+      <Items title={"人気の商品"} items={items}/>
+      <Items title={"新しい商品"} items={items}/>
+      <Items title={"期間限定"} items={items}/>
 
       </main>
 
@@ -29,3 +34,12 @@ const Home: NextPage = () => {
   )
   }
 export default Home
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const items = await fetchItems()
+  return {
+    props: {
+      items
+    },
+  };
+}

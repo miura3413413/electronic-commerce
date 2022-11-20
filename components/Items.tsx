@@ -5,10 +5,10 @@ import{ Pagination, Navigation } from 'swiper'
 
 interface Props {
   title: string
-  images: string[]
+  items: Item[]
 }
 
-const Items = ({title, images}: Props) => {
+const Items = ({title, items}: Props) => {
 
   return (
         <div className=''>
@@ -22,12 +22,12 @@ const Items = ({title, images}: Props) => {
             navigation={true}
             modules={[Pagination, Navigation]}
           >
-            {images.map((src: string, index: number) => {
+            {items.map((item: Item, index: number) => {
               return (
                 <SwiperSlide key={`${index}`} className="">
                   <div className='h-80 w-80 ml-10 bg-white flex justify-center items-center'>
                     <div className='relative h-60 w-60 z-0 cursor-pointer '>
-                      <Image src={src} alt='' layout='fill' objectFit='cover'/> 
+                      <Image src={item.url} alt='' layout='fill' objectFit='cover'/> 
                     </div>
                     <span className='absolute  bottom-1 cursor-pointer hover:underline'>名前</span>
                   </div>

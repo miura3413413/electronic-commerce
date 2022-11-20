@@ -1,0 +1,34 @@
+{
+  "item": [
+    {
+      "name": "トラ",
+      "price": 100000,
+      "category": "animal",
+      "url": "/animal1.jpg"
+    },
+    {
+      "name": "鹿",
+      "price": 100000,
+      "category": "animal",
+      "url": "/animal2.jpg"
+    },
+    {
+      "name": "リス",
+      "price": 500000,
+      "category": "animal",
+      "url": "/animal3.jpg"
+    },
+    {
+      "name": "ライオン",
+      "price": 100000,
+      "category": "animal",
+      "url": "/animal4.jpg"
+    },
+    {
+      "name": "インコ",
+      "price": 900000,
+      "category": "animal",
+      "url": "/animal5.jpg"
+    }
+  ]
+}
