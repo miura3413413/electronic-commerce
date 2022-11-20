@@ -17,6 +17,10 @@ const Itemchema = new Schema(
     url: {
       type: String,
       required: true
+    },
+    text: {
+      type: String,
+      required: true
     }
   },
   {

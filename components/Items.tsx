@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import{ Pagination, Navigation } from 'swiper' 
+import Link from 'next/link';
 
 interface Props {
   title: string
@@ -25,12 +26,18 @@ const Items = ({title, items}: Props) => {
             {items.map((item: Item, index: number) => {
               return (
                 <SwiperSlide key={`${index}`} className="">
-                  <div className='h-80 w-80 ml-10 bg-white flex justify-center items-center'>
-                    <div className='relative h-60 w-60 z-0 cursor-pointer '>
-                      <Image src={item.url} alt='' layout='fill' objectFit='cover'/> 
+                    <div className='h-80 w-80 ml-10 bg-white flex justify-center items-center'>
+                      <Link href={`/status/${item._id}`}>
+                        <div className='relative h-60 w-60 z-0 cursor-pointer '>
+                          <Image src={item.url} alt='' layout='fill' objectFit='cover'/> 
+                        </div>
+                      </Link>
+                      <Link href={`/status/${item._id}`} className="absolute  bottom-1 cursor-pointer hover:underline">
+                        <span>{item.name}</span>
+                      </Link>
                     </div>
-                    <span className='absolute  bottom-1 cursor-pointer hover:underline'>名前</span>
-                  </div>
+
+
                  </SwiperSlide>
               )
             })}

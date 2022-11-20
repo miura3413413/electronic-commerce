@@ -4,31 +4,36 @@
       "name": "トラ",
       "price": 100000,
       "category": "animal",
-      "url": "/animal1.jpg"
+      "url": "/animal1.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
     },
     {
       "name": "鹿",
       "price": 100000,
       "category": "animal",
-      "url": "/animal2.jpg"
+      "url": "/animal2.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
     },
     {
       "name": "リス",
       "price": 500000,
       "category": "animal",
-      "url": "/animal3.jpg"
+      "url": "/animal3.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
     },
     {
       "name": "ライオン",
       "price": 100000,
       "category": "animal",
-      "url": "/animal4.jpg"
+      "url": "/animal4.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
     },
     {
       "name": "インコ",
       "price": 900000,
       "category": "animal",
-      "url": "/animal5.jpg"
+      "url": "/animal5.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
     }
   ]
 }
