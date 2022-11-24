@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import 'swiper/css/bundle'
 import{ Pagination, Navigation } from 'swiper' 
 import Link from 'next/link';
 

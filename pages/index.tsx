@@ -8,7 +8,6 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({items}: Props) => {
-  console.log(items)
   return (
     <Layout title="ホーム">
       <div className='min-h-screen top-0 bg-gray-200'>

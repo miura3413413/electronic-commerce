@@ -1,15 +1,26 @@
 import { GetServerSideProps } from 'next'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Layout from '../../components/Layout'
 import Topbar from '../../components/Topbar'
+import { addToCart } from '../../redux/cartSlice'
 import { fetchOneItem } from '../../util/fetchOneItem'
 interface Props {
   item: Item
 }
 
 const Item = ({item}: Props) => {
-  console.log(item)
+  const [selected, setSelected] = useState(1)
+  const dispatch = useDispatch()
+
+  const addItemToCart = () => {
+    for(let i=0; i < selected; i++){
+      dispatch(addToCart(item))
+    }
+
+  }
+
   return (
     <Layout title={item.name}>
       <div className='inline-block m-20  lg:flex'>
@@ -23,7 +34,23 @@ const Item = ({item}: Props) => {
             <li>説明: {item.text}</li>
             <li className='text-xl font-bold mt-10'>価格: {item.price}円</li>
           </ul> 
-          <button className='px-10 py-4 text-xl font-semibold text-center text-white transition duration-300 hover:opacity-80 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 lg:w-auto'>カートに入れる</button>
+          <div>
+            <button
+              onClick={addItemToCart}
+              className='px-10 py-4 text-xl font-semibold text-center text-white transition duration-300 hover:opacity-80 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 lg:w-auto'
+            >
+              カートに入れる
+            </button>
+            <select
+              className='w-12 h-12 ml-5 focus:outline-none'
+              value={selected} onChange={ (e: React.ChangeEvent<HTMLSelectElement>)  => setSelected(Number(e.target.value))}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+
         </div>
       </div>
     </Layout>
