@@ -11,7 +11,7 @@ interface Props {
 export const Layout: NextPage<Props> = ({children, title}: Props) => {
   const [open, setOpen] = useState(false)
   return (
-    <div className="h-full">
+    <div className="">
       <Head>
         <title>{title}</title>
       </Head>
