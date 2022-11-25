@@ -18,11 +18,11 @@ const Topbar = ({open, setOpen}:Props) => {
     <div className="h-16 z-10 flex items-center justify-between bg-gray-700  sticky top-0">
       <div className='flex items-center'>
       <AiOutlineBars 
-        className='h-5 w-5 cursor-pointer ml-10 text-white'
+        className='h-5 w-5 cursor-pointer ml-10 text-white hover:opacity-50 transition-opacity'
         onClick={()=>  setOpen(!open)}
       />
       <Link href={"/"}>
-        <h2 className='ml-2 hidden cursor-pointer md:inline-block text-white '>electronic-commerce</h2>
+        <h2 className='ml-2 hidden cursor-pointer md:inline-block text-white hover:opacity-50 transition-opacity'>electronic-commerce</h2>
       </Link>
 
       </div>
@@ -33,7 +33,7 @@ const Topbar = ({open, setOpen}:Props) => {
       </div>
       <div className='flex'>
       <Link href={"/cart"}>
-        <div className='relative'>
+        <div className='relative hover:opacity-50 transition-opacity'>
           <SlBasket className=' w-5 h-5 mr-5 cursor-pointer text-white'/>
           <span className='absolute right-1 -top-2 h-5 w-5 flex items-center justify-center cursor-pointer rounded-full bg-blue-500 text-white'>
             {items.length}

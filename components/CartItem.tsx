@@ -30,7 +30,7 @@ function CartItem({id, items }: Props) {
       </div>
       <div className='ml-auto'>
         <h1 className='text-xl font-bold'>&yen;{items[0].price.toLocaleString()}</h1>
-        <button onClick={removeItem} className=' hover:underline'>削除</button>
+        <button onClick={removeItem} className=' hover:underline hover:opacity-50'>削除</button>
       </div>
      
 
