@@ -83,7 +83,7 @@ const Cart: NextPage = () => {
               pauseOnFocusLoss
               draggable
               pauseOnHover
-              theme="dark"
+              theme="dark" 
             />
             <h1 className='p-10 font-bold text-xl'>ショッピングカート</h1>
             <div className='flex flex-col gap-3 md:flex-row md:justify-around m-10'>
