@@ -13,7 +13,9 @@ interface Item {
 interface User {
   _id: string,
   name: string,
-  image: string,
+  image?: string,
+  mailaddress: string,
+  password: number
   createdAt: string,
   updatedAt: string,
   __v: number,

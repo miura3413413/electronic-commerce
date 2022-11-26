@@ -71,7 +71,7 @@ const Login: NextPage = () => {
           </div>
 
           <div className='flex flex-col items-center mt-10'>
-            <label className='mb-2 text-xl border-b-2 border-gray-400' htmlFor="password">Password</label>
+            <label className='mb-2 text-xl border-b-2 border-gray-400' htmlFor="password">パスワード</label>
             <input
               {...register('password', {
                 required: {
@@ -95,7 +95,7 @@ const Login: NextPage = () => {
             type="submit"
             disabled={!isDirty}
           >
-            Submit
+            ログイン
           </button>
         </form>
       </div>
