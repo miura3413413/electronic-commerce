@@ -1,26 +1,23 @@
 import { Schema, model, models } from 'mongoose';
 
-const Itemchema = new Schema(
+const Userchema = new Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    price: {
-      type: Number,
-      required: true,
-    },
-    category: {
+    email: {
       type: String,
       required: true,
+      unique: true
     },
-    url: {
+    password: {
       type: String,
-      required: true
+      required: true,
     },
-    text: {
+    image: {
       type: String,
-      required: true
+      required: false
     }
   },
   {
@@ -28,4 +25,4 @@ const Itemchema = new Schema(
   },
 );
 
-export const Item = models.Item || model("Item", Itemchema)
+export const User = models.User || model("User", Userchema)

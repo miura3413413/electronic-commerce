@@ -6,12 +6,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.1",
     "@reduxjs/toolkit": "^1.9.0",
     "@stripe/stripe-js": "^1.44.1",
     "mongoose": "^6.7.2",
     "next": "latest",
+    "next-auth": "^4.17.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.39.5",
     "react-icons": "^4.6.0",
     "react-redux": "^8.0.5",
     "react-toastify": "^9.1.1",

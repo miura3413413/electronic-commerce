@@ -35,5 +35,25 @@
       "url": "/animal5.jpg",
       "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
     }
+  ],
+  "user": [
+    {
+      "name": "user1",
+      "image": "",
+      "email": "user1@example.com",
+      "password": "01234567"
+    },
+    {
+      "name": "user2",
+      "image": "",
+      "email": "user2@example.com",
+      "password": "01234567"
+    },
+    {
+      "name": "user3",
+      "image": "/animal5.jpg",
+      "email": "user3@example.com",
+      "password": "01234567"
+    }
   ]
 }
