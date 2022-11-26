@@ -46,14 +46,14 @@ const Topbar = ({open, setOpen}:Props) => {
           </span>
         </div>
       </Link>
-
       {session?
         <div className='flex items-center'>
           {session.user?.image?
             <div className='relative w-10 h-10 rounded-full mr-2 border-2 border-white'>
               <Image src={session.user.image} alt="" layout='fill' objectFit='cover' className='rounded-full'></Image>
             </div>
-            :<BsFillPersonFill className='w-7 h-7 cursor-pointer mr-5 text-white '/>}
+            :<BsFillPersonFill className='w-7 h-7 cursor-pointer mr-5 text-white '/>
+          }
             <button
               className='px-2 py-2 mr-2 h-8 text-sm flex items-center font-semibold text-center text-white hover:opacity-80 transition-opacity rounded-lg bg-gradient-to-br from-purple-600 to-blue-500'
              onClick={logoutHandler}     
