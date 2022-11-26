@@ -13,7 +13,7 @@ export default async function handler(
 ) {
   await db.connectMongo()
   try {
-    res.setHeader('Access-Control-Allow-Origin', "process.env.NEXT_PUBLIC_BASE_URL")
+    res.setHeader('Access-Control-Allow-Origin', process.env.NEXT_PUBLIC_BASE_URL as string)
     const newUser = await new User(req.body)
     const user = await newUser.save()
     return res.status(200).json(user);
