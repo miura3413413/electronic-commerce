@@ -31,7 +31,7 @@ const Login: NextPage = () => {
       redirect: false,
       email: data.email,
       password: data.password,
-      callbackUrl: `${window.location.origin}`,
+      callbackUrl: `${window.location.origin}`, 
     }).then((res) => {
       if (res?.error) {
         setError("EmailとPasswordを正しく入力してください");
