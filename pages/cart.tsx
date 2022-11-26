@@ -1,5 +1,7 @@
 import { NextPage } from 'next'
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify';
@@ -11,6 +13,8 @@ import { fetchPostJSON } from '../util/api-helpers';
 import getStripe from "../util/get-stripejs";
 
 const Cart: NextPage = () => {
+  const { data: session } = useSession()
+  const router = useRouter()
   const  paymentTotal = useSelector((state: RootState) => {
     return state.cart.items.reduce((total: number, item: Item) => (total += item.price),0)
   })
@@ -26,11 +30,14 @@ const Cart: NextPage = () => {
     }, {} as { [key: string]: Item[] });
     setGroupedItemsInCart(groupedItems);
   }, [items])
-
+  
 // https://github.com/vercel/next.js/tree/canary/examples/with-stripe-typescript
   const createCheckoutSession = async () => {
+    if(!session){
+      router.push("/login")
+    }
     setLoading(true);
-
+    
 
     const checkoutSession: Stripe.Checkout.Session = await fetchPostJSON(
       "/api/checkout_sessions",
