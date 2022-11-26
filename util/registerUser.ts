@@ -7,5 +7,5 @@ interface registerUser {
 }
 
 export const registerUser = async (data: registerUser) => {
-  axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/registerUser`, data)
+  axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}api/registerUser`, data)
 }
