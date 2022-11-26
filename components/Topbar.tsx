@@ -1,13 +1,15 @@
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { Dispatch, SetStateAction } from 'react'
+import { useRouter } from 'next/router';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { AiOutlineBars } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
-import { BsFillPersonFill } from "react-icons/bs";
+import { BsFillPersonFill, BsXLg } from "react-icons/bs";
 import { SlBasket } from "react-icons/sl";
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
+import { fetchItems } from '../util/fetchItems';
 
 interface Props {
   open: boolean
@@ -16,27 +18,52 @@ interface Props {
 
 const Topbar = ({open, setOpen}:Props) => {
   const items = useSelector((state: RootState) => state.cart.items)
+  const router = useRouter()
   const { data: session } = useSession()
+  const [search, setSearch] = useState(false)
+  const [seachedItems, setSeachedItems] = useState<Item[]>()
+  const [searchValue, setSeachValue] = useState("")
+
+  useEffect(()=>{
+    fetchItems().then(seachedItem => setSeachedItems(seachedItem))
+  },[])
+
   const logoutHandler = () => {
     signOut({ callbackUrl: "/login" })
   }
+
+  const newSeachedItems = seachedItems?.filter((item)=>{
+    return searchValue && item.name.includes(searchValue) 
+  })
+
   return (
     <div className="h-16 z-10 flex items-center justify-between bg-gray-700  sticky top-0">
       <div className='flex items-center'>
-      <AiOutlineBars 
-        className='h-5 w-5 cursor-pointer ml-10 text-white hover:opacity-50 transition-opacity'
-        onClick={()=>  setOpen(!open)}
-      />
-      <Link href={"/"}>
-        <h2 className='ml-2 hidden cursor-pointer md:inline-block text-white hover:opacity-50 transition-opacity'>electronic-commerce</h2>
-      </Link>
-
+        <AiOutlineBars 
+          className='h-5 w-5 cursor-pointer ml-10 text-white hover:opacity-50 transition-opacity'
+          onClick={()=>  setOpen(!open)}
+        />
+        <Link href={"/"}>
+          <h2 className='ml-2 hidden cursor-pointer md:inline-block text-white hover:opacity-50 transition-opacity'>electronic-commerce</h2>
+        </Link>
       </div>
 
-      <div className="flex items-center">
-        <input className='outline-none border-2 rounded-lg px-2'/>
-        <AiOutlineSearch className='w-5 h-5 cursor-pointer text-white'/>
+      <div className='flex flex-col '>
+        <div onClick={()=> setSearch(true)} className="flex items-center">
+          <input onChange={(e)=> setSeachValue(() => e.target.value)} className='outline-none border-2 rounded-lg px-2 '/>
+          <AiOutlineSearch className='w-5 h-5 cursor-pointer text-white'/>
+        </div>
+        {search && 
+          <div className='flex flex-col bg-gray-500 text-white absolute w-48 top-12 rounded-xl py-3 items-start'>
+            <BsXLg className='ml-auto mr-2 flex justify-end cursor-pointer text-white hover:opacity-50 transition-opacity' onClick={()=>setSearch(false)}/>
+            {newSeachedItems?.map((item) => (
+              <button onClick={()=>router.push(`/status/${item._id}`)} className='w-full h-8 text-left hover:bg-gray-300 hover:duration-300'>・{item.name}</button>
+            ))}
+          </div>
+        }
       </div>
+
+
       <div className='flex justify-center items-center'>
       <Link href={"/cart"}>
         <div className='relative hover:opacity-50 transition-opacity'>
