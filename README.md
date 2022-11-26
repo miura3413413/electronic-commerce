@@ -4,6 +4,7 @@
 
 ・Typescript
 ・Next.js
+・NextAuth
 ・MongoDB
 ・Tailwind
 ・Stripe

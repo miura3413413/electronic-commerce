@@ -46,7 +46,7 @@ const Item = ({item}: Props) => {
 
   return (
     <Layout title={item.name}>
-      <div className='inline-block m-20  lg:flex'>
+      <div className='inline-block m-10  lg:flex'>
         <ToastContainer
           position="top-center"
           autoClose={5000}
