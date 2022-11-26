@@ -6,7 +6,7 @@ import { store } from '../redux/store'
 import { Session } from 'next-auth'
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
-import Loading from '../components/LOading'
+import Loading from '../components/Loading'
 
 interface NewAppProps extends AppProps{
   session: Session
