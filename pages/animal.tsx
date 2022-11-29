@@ -50,7 +50,7 @@ const Animal: NextPage<Props> =({items}: Props) => {
             <Link href={`/status/${item._id}`}>
               <h1 className='hover:underline cursor-pointer text-lg font-semibold sm:mr-2 m-0'>{item.name}</h1>
             </Link>
-              <h2 className=''>&yen;{item.price}</h2>
+              <h2 className=''>&yen;{item.price.toLocaleString()}</h2>
             </div>
 
           </div>

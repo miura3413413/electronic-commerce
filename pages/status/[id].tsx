@@ -68,7 +68,7 @@ const Item = ({item}: Props) => {
             <li className='text-xl font-bold mt-5 lg:m-0'>{item.name}</li>
             <li>種類: {item.category}</li>
             <li>説明: {item.text}</li>
-            <li className='text-xl font-bold my-5'>価格: {item.price}円</li>
+            <li className='text-xl font-bold my-5'>価格: {item.price.toLocaleString()}円</li>
           </ul> 
         <div className='flex flex-col'>
           <button
