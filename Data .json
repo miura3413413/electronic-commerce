@@ -34,6 +34,62 @@
       "category": "animal",
       "url": "/animal5.jpg",
       "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
+    },
+    {
+      "name": "狐",
+      "price": 30000,
+      "category": "animal",
+      "url": "/animal6.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
+    },
+    {
+      "name": "オオハシ",
+      "price": 111000,
+      "category": "animal",
+      "url": "/animal7.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
+    },
+    {
+      "name": "馬",
+      "price": 5555000,
+      "category": "animal",
+      "url": "/animal8.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
+    },
+    {
+      "name": "ゴリラ",
+      "price": 976700,
+      "category": "animal",
+      "url": "/animal9.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
+    },
+    {
+      "name": "ハリネズミ",
+      "price": 42430,
+      "category": "animal",
+      "url": "/animal10.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
+    },
+    {
+      "name": "キリン",
+      "price": 234100,
+      "category": "animal",
+      "url": "/animal11.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
+    },
+    {
+      "name": "アヒル",
+      "price": 900130,
+      "category": "animal",
+      "url": "/animal12.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
+    },
+    {
+      "name": "ウサギ",
+      "price": 9243000,
+      "category": "animal",
+      "url": "/animal13.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem, eligendi cupiditate hic eaque,animi aut quia suscipit porro laudantium soluta veritatis est.Suscipit doloremque eligendi numquam quod quia ut laboriosam."
     }
   ],
   "user": [

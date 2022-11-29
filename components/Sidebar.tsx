@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { Dispatch, SetStateAction } from 'react'
 import { BsXLg } from "react-icons/bs";
 
@@ -14,8 +15,12 @@ const Sidebar = ({open, setOpen}:Props) => {
           <BsXLg className='cursor-pointer text-white hover:opacity-50 transition-opacity' onClick={()=>setOpen(!open)}/>
         </div>
         <div className='mt-5'>
+        <Link href={"/animal"}>
           <h2 className='cursor-pointer text-xl mb-3 hover:underline text-white'>動物</h2>
+        </Link>
+        <Link href={"/food"}>
           <h2 className='cursor-pointer text-xl hover:underline text-white'>食べ物</h2>
+        </Link>
         </div>
 
     </div>

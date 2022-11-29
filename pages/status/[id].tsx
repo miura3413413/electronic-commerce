@@ -61,7 +61,7 @@ const Item = ({item}: Props) => {
         />
 
         <div className='relative h-96 w-96 z-0 cursor-pointer lg:h-[600px] lg:w-[600px]'>
-          <Image src={item.url} alt="" layout='fill' objectFit='cover' />
+          <Image src={item.url} alt="" layout='fill' objectFit='contain' />
         </div>
         <div className='lg:ml-10 lg:w-1/4'>
           <ul className='leading-9'>
