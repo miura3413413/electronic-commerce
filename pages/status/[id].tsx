@@ -10,6 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Review, { startRate } from '../../components/Review'
+import PostReview from '../../components/PostReview'
+import { BsXLg } from 'react-icons/bs'
 
 interface Props {
   item: Item | null
@@ -35,6 +37,7 @@ const dummyData =[
 const Item = ({item}: Props) => {
   const router = useRouter() 
   const [selected, setSelected] = useState(1)
+  const [open, setOpen] = useState(false)
   const dispatch = useDispatch()
   const [goCart, setGocart] = useState(false)
   const avgStart = dummyData.reduce((total: number, data:any)=>(
@@ -114,15 +117,30 @@ const Item = ({item}: Props) => {
         </div>
 
         <div className='border-t-2 border-gray-300'>
-          <h1 className='mt-10 font-bold text-xl '>カスタマーレビュー</h1>
+          <h1 className='mt-5 font-bold text-xl '>カスタマーレビュー</h1>
           <div className='flex items-center text-xl'>
             {startRate(avgStart)}星5つ中{avgStart}
           </div>
-          <h1 className='border-b-2 border-gray-300 '>{dummyData.length}件のグローバル評価</h1>
+          <h1 className='border-b-2 border-gray-300 pb-5'>{dummyData.length}件のグローバル評価</h1>
           <div>
             <Review reviews={dummyData}/>
           </div>
-          <button className='lg:w-1/2 w-full p-2 mt-10 text-left  transition duration-300 hover:opacity-50 rounded-lg border-2 mr-auto ml-auto block'>レビューを書く</button>
+          
+         {open?
+         <div className='mt-10 border-2 p-5 max-w-[1200px] mr-auto ml-auto block'>
+          <BsXLg
+            onClick={()=>setOpen(!open)}
+            className='cursor-pointer  hover:opacity-50 transition-opacity flex ml-auto' 
+          />
+          <PostReview />
+        </div>
+
+        :
+         <button
+          onClick={()=>setOpen(!open)}
+          className='lg:w-1/2 w-full p-2 mt-10 text-left  transition duration-300 hover:opacity-50 rounded-lg border-2 mr-auto ml-auto block'>レビューを書く
+        </button>
+        }
         </div>
       </div>
     </Layout>

@@ -16,10 +16,10 @@ interface Props {
 export const startRate = (num: number): ReactNode => {
   const starRate = []
   for(let i = 0; i < num; i++) {
-    starRate.push(<AiFillStar />);
+    starRate.push(<AiFillStar key={i}/>);
   }
   for(let i = 0; i < 5 - num; i++) {
-    starRate.push(<AiOutlineStar />);
+    starRate.push(<AiOutlineStar key={i+4}/>);
   }
   return starRate
 }
@@ -30,8 +30,8 @@ const Review = ({reviews}: Props) => {
 
   return (
     <div>
-      {reviews.map((review)=>(
-        <div>
+      {reviews.map((review, index)=>(
+        <div key={index}>
           <div className='flex items-center mt-10'>
             {review.userImage?
               <div className='relative w-8 h-8 rounded-full mr-2 border-2 border-white'>
