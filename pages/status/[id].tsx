@@ -9,16 +9,37 @@ import { fetchOneItem } from '../../util/fetchOneItem'
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Review, { startRate } from '../../components/Review'
 
 interface Props {
   item: Item | null
 }
+
+const dummyData =[
+  {
+  userName: "user2",
+  userImage: "",
+  title: "test1",
+  text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim porro laborum assumenda cum veniam nesciunt facilis atque corporis odio qui libero ducimus consequatur aut hic, impedit, saepe voluptatibus doloribus ut!",
+  star: 1
+  },
+    {
+  userName: "user3",
+  userImage: "/animal5.jpg",
+  title: "test2",
+  text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim porro laborum assumenda cum veniam nesciunt facilis atque corporis odio qui libero ducimus consequatur aut hic, impedit, saepe voluptatibus doloribus ut!",
+  star: 5
+  }
+]
 
 const Item = ({item}: Props) => {
   const router = useRouter() 
   const [selected, setSelected] = useState(1)
   const dispatch = useDispatch()
   const [goCart, setGocart] = useState(false)
+  const avgStart = dummyData.reduce((total: number, data:any)=>(
+    total += data.star
+  ),0)/dummyData.length
 
   const addItemOrGoCart = () => {
     if(goCart){
@@ -46,7 +67,7 @@ const Item = ({item}: Props) => {
 
   return (
     <Layout title={item.name}>
-      <div className='inline-block m-10  lg:flex'>
+      <div className='m-10'>
         <ToastContainer
           position="top-center"
           autoClose={5000}
@@ -60,40 +81,54 @@ const Item = ({item}: Props) => {
           theme="light"
         />
 
-        <div className='relative h-96 w-96 z-0 cursor-pointer lg:h-[600px] lg:w-[600px]'>
-          <Image src={item.url} alt="" layout='fill' objectFit='contain' />
-        </div>
-        <div className='lg:ml-10 lg:w-1/4'>
-          <ul className='leading-9'>
-            <li className='text-xl font-bold mt-5 lg:m-0'>{item.name}</li>
-            <li>種類: {item.category}</li>
-            <li>説明: {item.text}</li>
-            <li className='text-xl font-bold my-5'>価格: {item.price.toLocaleString()}円</li>
-          </ul> 
-        <div className='flex flex-col'>
-          <button
-            onClick={addItemOrGoCart}
-            className='px-10 py-4 text-xl font-semibold text-center text-white transition duration-300 hover:opacity-80 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 lg:w-auto'>
-            {goCart?"カートへ移動する":"カートに入れる"}
-          </button>
-          <select
-            className='w-20 h-8 mt-5 shadow-md shadow-gray-400 bg-gray-200 rounded-lg focus:outline-none'
-            value={selected} onChange={ (e: React.ChangeEvent<HTMLSelectElement>)  => setSelected(Number(e.target.value))}
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-            <Link href={"/"}>
-              <h1 className='mt-8 text-lg mx-12 hover:underline hover:opacity-50 transition-opacity'>&rarr;買い物に戻る</h1>
-            </Link>
+        <div className='inline-block lg:flex'>
+          <div className='relative h-96 w-96 z-0 cursor-pointer lg:h-[600px] lg:w-[600px]'>
+            <Image src={item.url} alt="" layout='fill' objectFit='contain' />
           </div>
+          <div className='lg:ml-10 lg:w-1/4 lg:mt-14'>
+            <ul className='leading-9'>
+              <li className='text-xl font-bold mt-5 lg:m-0'>{item.name}</li>
+              <li>種類: {item.category}</li>
+              <li>説明: {item.text}</li>
+              <li className='text-xl font-bold my-5'>価格: {item.price.toLocaleString()}円</li>
+            </ul> 
+            <div className='flex flex-col'>
+              <button
+                onClick={addItemOrGoCart}
+                className='px-10 py-4 text-xl font-semibold text-center text-white transition duration-300 hover:opacity-80 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 lg:w-auto'>
+                {goCart?"カートへ移動する":"カートに入れる"}
+              </button>
+              <select
+                className='w-20 h-8 mt-5 shadow-md shadow-gray-400 bg-gray-200 rounded-lg focus:outline-none'
+                value={selected} onChange={ (e: React.ChangeEvent<HTMLSelectElement>)  => setSelected(Number(e.target.value))}
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <Link href={"/"}>
+                <h1 className='mt-8 text-lg hover:underline hover:opacity-50 transition-opacity mb-10'>&rarr;買い物に戻る</h1>
+              </Link>
+            </div>
+          </div>
+        </div>
 
+        <div className='border-t-2 border-gray-300'>
+          <h1 className='mt-10 font-bold text-xl '>カスタマーレビュー</h1>
+          <div className='flex items-center text-xl'>
+            {startRate(avgStart)}星5つ中{avgStart}
+          </div>
+          <h1 className='border-b-2 border-gray-300 '>{dummyData.length}件のグローバル評価</h1>
+          <div>
+            <Review reviews={dummyData}/>
+          </div>
+          <button className='lg:w-1/2 w-full p-2 mt-10 text-left  transition duration-300 hover:opacity-50 rounded-lg border-2 mr-auto ml-auto block'>レビューを書く</button>
         </div>
       </div>
     </Layout>
   )
 }
+
 
 
 export default Item
