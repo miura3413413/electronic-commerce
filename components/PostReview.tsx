@@ -20,7 +20,6 @@ const  PostReview = () => {
     }
   }
 
-
   const HandleStarShine = (rate: number) => {
     setRate( rate + 1 )
   }
