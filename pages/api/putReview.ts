@@ -13,8 +13,8 @@ export default async function handler(
 ) {
   await db.connectMongo()
   try {
-
-    // return res.status(200).json(item)
+    const item = await Item.findByIdAndUpdate({ _id: req.body._id }, { $push: { review: [req.body] } })
+    return res.status(200).json(item.review)
   } catch (err) {
     console.log(err);
     res.status(500).json({ err });

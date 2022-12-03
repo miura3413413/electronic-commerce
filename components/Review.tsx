@@ -5,11 +5,11 @@ import { BsFillPersonFill } from 'react-icons/bs'
 
 interface Props {
   reviews:{
-    userName: string,
-    userImage?: string,
+    userName: string | null | undefined,
+    userImage: string | null | undefined,
+    rate: number,
     title: string,
-    text: string,
-    star: number
+    text: string
   }[]
 }
 
@@ -42,7 +42,7 @@ const Review = ({reviews}: Props) => {
             <h1>{review.userName}</h1>
           </div>
           <div className='flex items-center'>
-            { startRate(review.star) }
+            { startRate(review.rate) }
             <h1 className='ml-2 font-bold'>{review.title}</h1>
           </div>
           <h1>{review.text}</h1>

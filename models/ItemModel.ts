@@ -24,6 +24,7 @@ const Itemchema = new Schema(
     },
     review: [
       {
+        _id: { type: String, required: true },
         userName: { type: String, required: true },
         userImage: { type: String, required: false },
         rate: { type: Number, required: true },

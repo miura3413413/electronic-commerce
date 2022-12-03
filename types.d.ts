@@ -4,7 +4,14 @@ interface Item {
   price: number,
   category: string,
   url: string,
-  text: string
+  text: string,
+  review: [{
+    userName: string | null | undefined,
+    userImage: string | null | undefined,
+    rate: number,
+    title: string,
+    text: string
+  }],
   createdAt: string,
   updatedAt: string,
   __v: number,

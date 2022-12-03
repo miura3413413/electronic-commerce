@@ -1,14 +1,19 @@
 import { ErrorMessage } from '@hookform/error-message';
+import { useSession } from 'next-auth/react';
+import Router, { useRouter } from 'next/router';
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from "react-hook-form"
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { putReview } from '../util/putReview';
 interface Inputs {
-  rate: number |  null,
+  rate: number ,
   title: string,
   text: string
 }
 
 const  PostReview = () => {
+  const {query: id} = useRouter()
+  const { data: session } = useSession()
   const [rate, setRate] = useState<number>(0)
   
   const star: any[] = []
@@ -28,18 +33,18 @@ const  PostReview = () => {
   const {
     register,
     handleSubmit,
-    reset,
     setValue,
     formState: { errors, isDirty },
   } = useForm<Inputs>({
-    defaultValues: { rate: null, title: "", text: "" },
+    defaultValues: { title: "", text: "" },
     reValidateMode: "onSubmit"
   })
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data)
-    reset()
-    setRate(0)
+      const newData = {...data, _id: id.id as string, userName: session!.user!.name, userImage: session!.user!.image}
+      console.log(newData)
+      putReview(newData)
+      Router.reload()
   };
   
   return(

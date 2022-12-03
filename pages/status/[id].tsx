@@ -10,40 +10,44 @@ import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Review, { startRate } from '../../components/Review'
-import PostReview from '../../components/PostReview'
+import PostReview from '../../components/PutReview'
 import { BsXLg } from 'react-icons/bs'
+import { useSession } from 'next-auth/react'
 
 interface Props {
   item: Item | null
 }
 
-const dummyData =[
-  {
-  userName: "user2",
-  userImage: "",
-  title: "test1",
-  text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim porro laborum assumenda cum veniam nesciunt facilis atque corporis odio qui libero ducimus consequatur aut hic, impedit, saepe voluptatibus doloribus ut!",
-  star: 1
-  },
-    {
-  userName: "user3",
-  userImage: "/animal5.jpg",
-  title: "test2",
-  text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim porro laborum assumenda cum veniam nesciunt facilis atque corporis odio qui libero ducimus consequatur aut hic, impedit, saepe voluptatibus doloribus ut!",
-  star: 5
-  }
-]
+// const dummyData =[
+//   {
+//   userName: "user2",
+//   userImage: "",
+//   title: "test1",
+//   text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim porro laborum assumenda cum veniam nesciunt facilis atque corporis odio qui libero ducimus consequatur aut hic, impedit, saepe voluptatibus doloribus ut!",
+//   star: 1
+//   },
+//     {
+//   userName: "user3",
+//   userImage: "/animal5.jpg",
+//   title: "test2",
+//   text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim porro laborum assumenda cum veniam nesciunt facilis atque corporis odio qui libero ducimus consequatur aut hic, impedit, saepe voluptatibus doloribus ut!",
+//   star: 5
+//   }
+// ]
 
 const Item = ({item}: Props) => {
+  // item?.review.reverse()
+  // console.log(item)
   const router = useRouter() 
+  const { data: session } = useSession()
   const [selected, setSelected] = useState(1)
   const [open, setOpen] = useState(false)
   const dispatch = useDispatch()
   const [goCart, setGocart] = useState(false)
-  const avgStart = dummyData.reduce((total: number, data:any)=>(
-    total += data.star
-  ),0)/dummyData.length
-
+  const avgStar = Math.round(item!.review.reduce((total: number, data:any)=>(
+    total += data.rate
+  ),0)/item!.review.length)
+  
   const addItemOrGoCart = () => {
     if(goCart){
       router.push("/cart")
@@ -54,6 +58,15 @@ const Item = ({item}: Props) => {
       toast.success(`${item!.name}を${selected}つカートに入れました。`)
       setGocart(true)
     }
+  }
+  
+  const writeReview = () => {
+    if(session) {
+      setOpen(!open)
+    }else{
+      router.push("/login")
+    }
+
   }
 
   if(!item) {
@@ -118,12 +131,10 @@ const Item = ({item}: Props) => {
 
         <div className='border-t-2 border-gray-300'>
           <h1 className='mt-5 font-bold text-xl '>カスタマーレビュー</h1>
-          <div className='flex items-center text-xl'>
-            {startRate(avgStart)}星5つ中{avgStart}
-          </div>
-          <h1 className='border-b-2 border-gray-300 pb-5'>{dummyData.length}件のグローバル評価</h1>
+          {avgStar? <h1 className='flex items-center text-xl'>{startRate(avgStar)}星5つ中{avgStar}</h1>: null}
+          <h1 className='border-b-2 border-gray-300 pb-5'>{item.review.length}件のグローバル評価</h1>
           <div>
-            <Review reviews={dummyData}/>
+            <Review reviews={item.review.reverse()}/>
           </div>
           
          {open?
@@ -137,7 +148,7 @@ const Item = ({item}: Props) => {
 
         :
          <button
-          onClick={()=>setOpen(!open)}
+          onClick={writeReview}
           className='lg:w-1/2 w-full p-2 mt-10 text-left  transition duration-300 hover:opacity-50 rounded-lg border-2 mr-auto ml-auto block'>レビューを書く
         </button>
         }
