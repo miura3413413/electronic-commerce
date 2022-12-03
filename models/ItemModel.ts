@@ -21,7 +21,16 @@ const Itemchema = new Schema(
     text: {
       type: String,
       required: true
-    }
+    },
+    review: [
+      {
+        userName: { type: String, required: true },
+        userImage: { type: String, required: false },
+        rate: { type: Number, required: true },
+        title: { type: String, required: true },
+        text: { type: String, required: true }
+      }
+    ]
   },
   {
     timestamps: true,

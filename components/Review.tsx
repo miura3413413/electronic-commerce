@@ -46,8 +46,6 @@ const Review = ({reviews}: Props) => {
             <h1 className='ml-2 font-bold'>{review.title}</h1>
           </div>
           <h1>{review.text}</h1>
-
-
         </div>
       ))}
     </div>

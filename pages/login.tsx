@@ -24,7 +24,7 @@ const Login: NextPage = () => {
   } = useForm<Inputs>({
     defaultValues: { email: '', password: '' },
     reValidateMode: "onSubmit"
-  });
+  })
 
   const loginUser = async (data: Inputs) => {
     const res: any = await signIn("credentials", {
