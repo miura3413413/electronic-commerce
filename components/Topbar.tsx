@@ -92,9 +92,9 @@ const Topbar = ({ open, setOpen }: Props) => {
                 <Image
                   src={session.user.image}
                   alt=""
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-full"
+                  fill
+                  sizes=""
+                  className="rounded-full object-cover"
                 ></Image>
               </div>
             ) : (

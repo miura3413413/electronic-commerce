@@ -32,9 +32,10 @@ const Items = ({ title, items }: Props) => {
                   <div className="relative h-60 w-60 z-0 cursor-pointer ">
                     <Image
                       src={item.url}
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
+                      alt={item.name}
+                      sizes=""
+                      fill
+                      className="object-contain "
                     />
                   </div>
                 </Link>
