@@ -8,15 +8,15 @@ export default NextAuth({
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
+        email: { label: "email", type: "email" },
+        password: { label: "password", type: "password" }
       },
       async authorize(credentials) {
         await db.connectMongo()
         const email = credentials!.email;
-        const user = await User.findOne({ email: email })
+        const password = credentials!.password;
+        const user = await User.findOne({ email: email, password: password })
         await db.disconnectMongo()
-
         if (user) {
           return user
         } else {

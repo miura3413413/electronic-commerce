@@ -5,16 +5,18 @@ interface Item {
   category: string,
   url: string,
   text: string,
-  review: [{
-    userName: string | null | undefined,
-    userImage: string | null | undefined,
-    rate: number,
-    title: string,
-    text: string
-  }],
+  review: Review[],
   createdAt: string,
   updatedAt: string,
   __v: number,
+}
+
+interface Review {
+  userName: string | null | undefined,
+  userImage: string | null | undefined,
+  rate: number,
+  title: string,
+  text: string
 }
 
 interface User {

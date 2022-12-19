@@ -20,7 +20,6 @@ export default async function handler(
         product_data: {
           name: item.name,
           images: [process.env.NEXT_PUBLIC_BASE_URL + item.url],
-
         },
         unit_amount: item.price
 

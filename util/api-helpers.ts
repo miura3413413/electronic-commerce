@@ -1,3 +1,4 @@
+//https://github.com/vercel/next.js/blob/canary/examples/with-stripe-typescript/utils/api-helpers.ts
 export async function fetchPostJSON(url: string, data?: {}) {
   try {
     // Default options are marked with *

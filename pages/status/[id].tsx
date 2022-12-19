@@ -10,9 +10,9 @@ import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Review, { startRate } from "../../components/Review";
-import PostReview from "../../components/PutReview";
 import { BsXLg } from "react-icons/bs";
 import { useSession } from "next-auth/react";
+import PutReview from "../../components/PutReview";
 
 interface Props {
   item: Item | null;
@@ -46,8 +46,10 @@ const Item = ({ item }: Props) => {
   const [goCart, setGocart] = useState(false);
   const itemSort = [...item!.review];
   const avgStar = Math.round(
-    item!.review.reduce((total: number, data: any) => (total += data.rate), 0) /
-      item!.review.length
+    item!.review.reduce(
+      (total: number, data: Review) => (total += data.rate),
+      0
+    ) / item!.review.length
   );
 
   const addItemOrGoCart = () => {
@@ -156,7 +158,7 @@ const Item = ({ item }: Props) => {
                 onClick={() => setOpen(!open)}
                 className="cursor-pointer  hover:opacity-50 transition-opacity flex ml-auto"
               />
-              <PostReview />
+              <PutReview />
             </div>
           ) : (
             <button

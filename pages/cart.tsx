@@ -58,6 +58,7 @@ const Cart: NextPage = () => {
 
       // Redirect to checkout
       const stripe = await getStripe();
+
       const { error } = await stripe!.redirectToCheckout({
         // Make the id field from the Checkout Session creation API response
         // available to this file, so you can provide it as parameter here
