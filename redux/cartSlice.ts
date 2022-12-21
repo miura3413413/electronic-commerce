@@ -1,11 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+interface Clicked {
+  _id?: string,
+  clicked?: number
+}
 
 interface CartState {
-  items: Item[]
+  items: Item[],
+  clicked: Clicked[]
 }
 
 const initialState: CartState = {
-  items: []
+  items: [],
+  clicked: []
 }
 
 export const cartSlice = createSlice({
@@ -23,9 +29,19 @@ export const cartSlice = createSlice({
       newcart.splice(index, 1)
       state.items = newcart;
     },
+    clickedItem: (state: CartState, action: PayloadAction<Clicked>) => {
+      const index = state.clicked.findIndex(
+        (clicked: Clicked) => clicked._id === action.payload._id
+      )
+      if (index === -1) {
+        state.clicked.push(action.payload)
+      } else {
+        state.clicked![index].clicked! += 1
+      }
+    }
   },
 })
 
-export const { addToCart, removeItemFromCart } = cartSlice.actions
+export const { addToCart, removeItemFromCart, clickedItem } = cartSlice.actions
 
 export default cartSlice.reducer

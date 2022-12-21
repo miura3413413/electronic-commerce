@@ -23,7 +23,7 @@ const Topbar = ({ open, setOpen }: Props) => {
   const [search, setSearch] = useState(false);
   const [seachedItems, setSeachedItems] = useState<Item[]>();
   const [searchValue, setSeachValue] = useState("");
-
+  const clicked = useSelector((state: RootState) => state.cart.clicked);
   useEffect(() => {
     fetchItems().then((seachedItem) => setSeachedItems(seachedItem));
   }, []);
@@ -35,7 +35,6 @@ const Topbar = ({ open, setOpen }: Props) => {
   const newSeachedItems = seachedItems?.filter((item) => {
     return searchValue && item.name.includes(searchValue);
   });
-
   return (
     <div className="h-16 z-10 flex items-center justify-between bg-gray-700  sticky top-0">
       <div className="flex items-center">

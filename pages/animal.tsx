@@ -3,12 +3,16 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { fetchCategory } from "../util/fetchCategory";
 import Layout from "../components/Layout";
-import Link from "next/link";
+import { useRouter } from "next/router";
 interface Props {
   items: Item[];
 }
 const Animal: NextPage<Props> = ({ items }: Props) => {
   const [selected, setSelected] = useState("価格:昇順");
+  const router = useRouter();
+  const clickHandler = (item: Item) => {
+    router.push(`/status/${item._id}`);
+  };
 
   useEffect(() => {
     switch (selected) {
@@ -45,23 +49,25 @@ const Animal: NextPage<Props> = ({ items }: Props) => {
               key={item._id}
               className="flex p-5 sm:flex-col sm:bg-white bg-gray-200 sm:m-10 m-0"
             >
-              <Link href={`/status/${item._id}`}>
-                <div className="relative h-48 w-48 z-0 cursor-pointer">
-                  <Image
-                    src={item.url}
-                    alt={item.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </Link>
+              <div
+                className="relative h-48 w-48 z-0 cursor-pointer"
+                onClick={() => clickHandler(item)}
+              >
+                <Image
+                  src={item.url}
+                  alt={item.name}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div
+                className="sm:flex mt-5 sm:m-0 ml-5 items-center"
+                onClick={() => clickHandler(item)}
+              >
+                <h1 className="hover:underline cursor-pointer text-lg font-semibold sm:mr-2 m-0">
+                  {item.name}
+                </h1>
 
-              <div className="sm:flex mt-5 sm:m-0 ml-5 items-center">
-                <Link href={`/status/${item._id}`}>
-                  <h1 className="hover:underline cursor-pointer text-lg font-semibold sm:mr-2 m-0">
-                    {item.name}
-                  </h1>
-                </Link>
                 <h2 className="">&yen;{item.price.toLocaleString()}</h2>
               </div>
             </div>

@@ -29,9 +29,15 @@ const Itemchema = new Schema(
         userImage: { type: String, required: false },
         rate: { type: Number, required: true },
         title: { type: String, required: true },
-        text: { type: String, required: true }
+        text: { type: String, required: true },
+
       }
-    ]
+    ],
+    clicked: {
+      type: Number,
+      default: 0,
+      required: false
+    },
   },
   {
     timestamps: true,

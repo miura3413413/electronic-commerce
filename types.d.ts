@@ -6,6 +6,7 @@ interface Item {
   url: string,
   text: string,
   review: Review[],
+  clicked: number,
   createdAt: string,
   updatedAt: string,
   __v: number,
