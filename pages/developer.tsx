@@ -7,7 +7,6 @@ const developer = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const onSubmit = (e: any) => {
     e.preventDefault();
-    console.log(inputRef!.current?.value);
     if (inputRef!.current?.value == "123456") {
       setOpen(true);
     } else {

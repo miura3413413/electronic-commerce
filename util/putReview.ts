@@ -10,5 +10,5 @@ interface Review {
 }
 
 export const putReview = async (data: Review) => {
-  axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/putReview`, data, { withCredentials: true })
+  axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/putReview`, data)
 }

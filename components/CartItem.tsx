@@ -11,7 +11,6 @@ interface Props {
 }
 
 function CartItem({ id, items }: Props) {
-  console.log(items);
   const dispatch = useDispatch();
 
   const removeItem = () => {

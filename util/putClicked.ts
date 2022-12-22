@@ -6,5 +6,5 @@ interface Clicked {
 }
 
 export const putClicked = async (data: Clicked[]) => {
-  axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/putClicked`, data, { withCredentials: true })
+  axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/putClicked`, data)
 }

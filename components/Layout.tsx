@@ -17,7 +17,6 @@ export const Layout: NextPage<Props> = ({ children, title, is760 }: Props) => {
   const [open, setOpen] = useState(false);
   const item = useSelector((state: RootState) => state.cart.clicked);
   useEffect(() => {
-    console.log(item);
     const onUnload = (event: BeforeUnloadEvent): void => {
       putClicked(item);
     };

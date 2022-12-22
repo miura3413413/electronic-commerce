@@ -11,7 +11,7 @@ import {
   Legend,
 } from "chart.js";
 
-Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+Chart.register(CategoryScale, BarElement, LinearScale, Tooltip, Legend);
 const Analyze = () => {
   const [seachedItems, setSeachedItems] = useState<Item[]>();
 
