@@ -8,11 +8,10 @@ import { useDispatch } from "react-redux";
 import { clickedItem } from "../redux/cartSlice";
 
 interface Props {
-  title: string;
   items: Item[];
 }
 
-const Items = ({ title, items }: Props) => {
+const Items = ({ items }: Props) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -21,15 +20,11 @@ const Items = ({ title, items }: Props) => {
     router.push(`/status/${item._id}`);
   };
   return (
-    <div className="">
-      <h1 className="w-52 text-center text-xl ml-10 pt-10 mb-5  border-b-2 border-black">
-        {title}
-      </h1>
+    <div>
       <Swiper
         breakpoints={{
-          1150: { slidesPerView: 4 },
-          760: { slidesPerView: 3 },
-          0: { slidesPerView: 1 },
+          1150: { slidesPerView: 6 },
+          0: { slidesPerView: 3 },
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
@@ -37,9 +32,9 @@ const Items = ({ title, items }: Props) => {
         {items.map((item: Item, index: number) => {
           return (
             <SwiperSlide key={`${index}`} className="">
-              <div className="h-80 w-80 ml-10 bg-white flex justify-center items-center">
+              <div className="h-80 w-64 ml-10 px-0 bg-white flex justify-center items-center">
                 <div
-                  className="relative h-60 w-60 z-0 cursor-pointer "
+                  className="relative h-48 w-48 z-0 cursor-pointer "
                   onClick={() => clickHandler(item)}
                 >
                   <Image

@@ -14,9 +14,10 @@ import { fetchItems } from "../util/fetchItems";
 interface Props {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  is760?: boolean;
 }
 
-const Topbar = ({ open, setOpen }: Props) => {
+const Topbar = ({ open, setOpen, is760 }: Props) => {
   const items = useSelector((state: RootState) => state.cart.items);
   const router = useRouter();
   const { data: session } = useSession();
@@ -36,7 +37,11 @@ const Topbar = ({ open, setOpen }: Props) => {
     return searchValue && item.name.includes(searchValue);
   });
   return (
-    <div className="h-16 z-10 flex items-center justify-between bg-gray-700  sticky top-0">
+    <div
+      className={`h-16 ${
+        is760 ? "min-w-[760px]" : "w-auto"
+      } z-10 flex items-center justify-between bg-gray-700  sticky top-0`}
+    >
       <div className="flex items-center">
         <AiOutlineBars
           className="h-5 w-5 cursor-pointer ml-10 text-white hover:opacity-50 transition-opacity"

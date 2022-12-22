@@ -36,7 +36,7 @@ const Review = ({ reviews }: Props) => {
                   src={review.userImage}
                   alt=""
                   fill
-                  className="rounded-full object-cover"
+                  className="-full object-cover"
                 ></Image>
               </div>
             ) : (

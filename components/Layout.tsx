@@ -9,9 +9,10 @@ import Topbar from "./Topbar";
 interface Props {
   title: string | undefined | null;
   children: React.ReactNode;
+  is760?: boolean;
 }
 
-export const Layout: NextPage<Props> = ({ children, title }: Props) => {
+export const Layout: NextPage<Props> = ({ children, title, is760 }: Props) => {
   const [open, setOpen] = useState(false);
   const item = useSelector((state: RootState) => state.cart.clicked);
   useEffect(() => {
@@ -20,6 +21,7 @@ export const Layout: NextPage<Props> = ({ children, title }: Props) => {
       putClicked(item);
     };
     window.addEventListener("beforeunload", onUnload);
+
     return () => {
       window.removeEventListener("beforeunload", onUnload);
     };
@@ -29,7 +31,7 @@ export const Layout: NextPage<Props> = ({ children, title }: Props) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <Topbar open={open} setOpen={setOpen} />
+      <Topbar open={open} setOpen={setOpen} is760={is760} />
       {open && <Sidebar open={open} setOpen={setOpen} />}
 
       <main>{children}</main>
