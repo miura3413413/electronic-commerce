@@ -11,7 +11,7 @@ interface Props {
   items: Item[];
 }
 
-const Items = ({ items }: Props) => {
+const SlideItems = ({ items }: Props) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -59,4 +59,4 @@ const Items = ({ items }: Props) => {
     </div>
   );
 };
-export default Items;
+export default SlideItems;

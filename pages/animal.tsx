@@ -4,13 +4,18 @@ import React, { useEffect, useState } from "react";
 import { fetchCategory } from "../util/fetchCategory";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { clickedItem } from "../redux/cartSlice";
 interface Props {
   items: Item[];
 }
 const Animal: NextPage<Props> = ({ items }: Props) => {
   const [selected, setSelected] = useState("価格:昇順");
   const router = useRouter();
+  const dispatch = useDispatch();
+
   const clickHandler = (item: Item) => {
+    dispatch(clickedItem({ _id: item._id, clicked: 1 }));
     router.push(`/status/${item._id}`);
   };
 
@@ -38,7 +43,6 @@ const Animal: NextPage<Props> = ({ items }: Props) => {
             }
             value={selected}
           >
-            {/* <option value="デフォルト">デフォルト</option> */}
             <option value="価格:昇順">価格:昇順</option>
             <option value="価格:降順">価格:降順</option>
           </select>

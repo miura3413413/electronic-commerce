@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { putClicked } from "../util/putClicked";
+import Bottom from "./Bottom";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 interface Props {
@@ -35,6 +36,7 @@ export const Layout: NextPage<Props> = ({ children, title, is760 }: Props) => {
       {open && <Sidebar open={open} setOpen={setOpen} />}
 
       <main>{children}</main>
+      <Bottom is760={is760} />
     </div>
   );
 };

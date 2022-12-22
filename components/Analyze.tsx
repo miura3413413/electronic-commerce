@@ -53,21 +53,6 @@ const Analyze = () => {
   return (
     <div className="m-10 ">
       <h1 className="font-bold text-xl">クリック数</h1>
-      {/* {seachedItems?.map((seachedItem) => (
-        <div className="flex items-center">
-          <h1>・</h1>
-          <h1 className="w-20">{seachedItem.name}</h1>
-          <div className="relative h-20 w-20 z-0">
-            <Image
-              src={seachedItem.url}
-              alt={seachedItem.name}
-              fill
-              className="object-contain "
-            />
-          </div>
-          <h1>{seachedItem.clicked}</h1>
-        </div>
-      ))} */}
       <Bar data={data} width={100} height={50} options={options} />
     </div>
   );
