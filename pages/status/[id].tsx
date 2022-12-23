@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import Layout from "../../components/Layout";
@@ -36,8 +36,6 @@ interface Props {
 // ]
 
 const Item = ({ item }: Props) => {
-  // item?.review.reverse()
-  // console.log(item)
   const router = useRouter();
   const { data: session } = useSession();
   const [selected, setSelected] = useState(1);

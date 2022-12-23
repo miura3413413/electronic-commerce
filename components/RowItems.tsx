@@ -22,6 +22,7 @@ const RowItems = ({ items, isRow }: Props) => {
           <div
             className="relative h-24 w-24 z-0 m-1 cursor-pointer"
             onClick={() => clickHandler(item)}
+            key={item._id}
           >
             <Image
               src={item.url}

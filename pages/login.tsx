@@ -56,7 +56,7 @@ const Login: NextPage = () => {
   return (
     <Layout title="ログイン">
       <div className="flex flex-col">
-        <div className="h-screen w-screen flex items-center justify-center">
+        <div className="min-h-screen min-w-screen flex items-center justify-center flex-col">
           <div className="bg-gray-200 w-[500px] h-[600px] flex flex-col  items-center rounded-xl border-2 border-gray-400">
             <h1 className="w-72 flex justify-center mt-5 pb-3 text-2xl border-b-2 border-gray-400 font-semibold">
               ログイン
@@ -134,12 +134,12 @@ const Login: NextPage = () => {
               </h1>
             </div>
           </div>
+          <Link href={"/developer"} className="h-auto text-center">
+            <button className="hover:opacity-50 hover:underline">
+              for developer
+            </button>
+          </Link>
         </div>
-        <Link href={"/developer"} className="text-center mt-[-150px]">
-          <button className="hover:opacity-50 hover:underline">
-            for developer
-          </button>
-        </Link>
       </div>
     </Layout>
   );
