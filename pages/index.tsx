@@ -46,7 +46,7 @@ const Home: NextPage<Props> = ({ items }: Props) => {
             </div>
             <div>
               <h1 className="w-36 text-center text-xl ml-10  mb-5  border-b-2 border-black">
-                毛がある
+                小さい
               </h1>
               <RowItems items={furItem} isRow={true} />
             </div>
@@ -54,7 +54,7 @@ const Home: NextPage<Props> = ({ items }: Props) => {
 
           <div>
             <h1 className="w-36 text-center text-xl ml-10 pt-10 mb-5  border-b-2 border-black">
-              毛がある
+              毛がない
             </h1>
             <RowItems items={furItem} isRow={false} />
           </div>
