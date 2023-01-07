@@ -10,6 +10,7 @@ import { SlBasket } from "react-icons/sl";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { fetchItems } from "../util/fetchItems";
+import { ImArrowUp } from "react-icons/im";
 
 interface Props {
   open: boolean;
@@ -24,7 +25,7 @@ const Topbar = ({ open, setOpen, is760 }: Props) => {
   const [search, setSearch] = useState(false);
   const [seachedItems, setSeachedItems] = useState<Item[]>();
   const [searchValue, setSeachValue] = useState("");
-  const clicked = useSelector((state: RootState) => state.cart.clicked);
+
   useEffect(() => {
     fetchItems().then((seachedItem) => setSeachedItems(seachedItem));
   }, []);
@@ -122,6 +123,7 @@ const Topbar = ({ open, setOpen, is760 }: Props) => {
               <button className="px-2 py-2 mr-2  h-8 text-sm flex items-center font-semibold text-center text-white hover:opacity-80 transition-opacity rounded-lg bg-gradient-to-br from-purple-600 to-blue-500">
                 登録
               </button>
+              <ImArrowUp className="h-10 w-10 absolute text-blue-800 animate-pulse -bottom-10" />
             </Link>
           </div>
         )}
