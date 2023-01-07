@@ -3,6 +3,9 @@ import SlideItems from "../components/SlideItems";
 import { fetchItems } from "../util/fetchItems";
 import Layout from "../components/Layout";
 import RowItems from "../components/RowItems";
+import Modal from "../components/Modal";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 interface Props {
   items: Item[];
@@ -10,9 +13,12 @@ interface Props {
 
 const Home: NextPage<Props> = ({ items }: Props) => {
   const furItem = items.slice(items.length - 3);
+  const isModal = useSelector((state: RootState) => state.cart.isModal);
+
   return (
     <Layout title="ホーム" is760={true}>
       <div className="min-w-[760px] top-0 bg-gray-200">
+        {isModal ? <Modal /> : null}
         <h1 className="w-36 text-center text-xl ml-10 pt-10 mb-5  border-b-2 border-black">
           人気の商品
         </h1>

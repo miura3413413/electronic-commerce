@@ -6,12 +6,14 @@ interface Clicked {
 
 interface CartState {
   items: Item[],
-  clicked: Clicked[]
+  clicked: Clicked[],
+  isModal: boolean
 }
 
 const initialState: CartState = {
   items: [],
-  clicked: []
+  clicked: [],
+  isModal: true
 }
 
 export const cartSlice = createSlice({
@@ -38,10 +40,13 @@ export const cartSlice = createSlice({
       } else {
         state.clicked![index].clicked! += 1
       }
+    },
+    switchIsMpdal: (state: CartState) => {
+      state.isModal = !state.isModal
     }
   },
 })
 
-export const { addToCart, removeItemFromCart, clickedItem } = cartSlice.actions
+export const { addToCart, removeItemFromCart, clickedItem, switchIsMpdal } = cartSlice.actions
 
 export default cartSlice.reducer

@@ -33,7 +33,6 @@ export const Layout: NextPage<Props> = ({ children, title, is760 }: Props) => {
       </Head>
       <Topbar open={open} setOpen={setOpen} is760={is760} />
       {open && <Sidebar open={open} setOpen={setOpen} />}
-
       <main>{children}</main>
       <Bottom is760={is760} />
     </div>

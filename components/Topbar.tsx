@@ -45,7 +45,7 @@ const Topbar = ({ open, setOpen, is760 }: Props) => {
     >
       <div className="flex items-center">
         <AiOutlineBars
-          className="h-5 w-5 cursor-pointer ml-10 text-white hover:opacity-50 transition-opacity"
+          className="h-5 w-5 cursor-pointer ml-5 text-white hover:opacity-50 transition-opacity"
           onClick={() => setOpen(!open)}
         />
         <Link href={"/"}>
